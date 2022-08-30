@@ -24,7 +24,7 @@ func Validate(user model.User) error {
 func CreateUser(user model.User) (model.User, error) {
 	res, err := database.Collection(USERS).InsertOne(context.Background(), user)
 	if err != nil {
-		panic(err)
+		//panic(err)
 		return model.User{}, err
 	}
 	user, _ = GetUserByID(res.InsertedID.(primitive.ObjectID))

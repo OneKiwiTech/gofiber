@@ -17,4 +17,7 @@ func SetupRoutes(app *fiber.App) {
 	auth.Post("/renew-token", handler.RenewToken)
 	auth.Post("/reset-password", handler.ResetPassword)
 
+	file := app.Group("/file")
+	file.Post("/upload", handler.Upload)
+
 }

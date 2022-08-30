@@ -12,7 +12,7 @@ import (
 func CreateRefreshToken(token model.RefreshToken) (model.RefreshToken, error) {
 	res, err := database.Collection("refresh_tokens").InsertOne(context.Background(), token)
 	if err != nil {
-		panic(err)
+		//panic(err)
 		return model.RefreshToken{}, err
 	}
 	token, _ = GetRefreshTokenByID(res.InsertedID.(primitive.ObjectID))
