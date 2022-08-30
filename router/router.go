@@ -19,5 +19,6 @@ func SetupRoutes(app *fiber.App) {
 
 	file := app.Group("/file")
 	file.Post("/upload", handler.Upload)
+	file.Post("/uploads", handler.Uploads)
 
 }
