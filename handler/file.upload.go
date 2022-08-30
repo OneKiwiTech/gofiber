@@ -7,6 +7,8 @@ import (
 )
 
 // https://github.com/gofiber/recipes/issues/47
+// https://github.com/gofiber/fiber/issues/221
+
 func Upload(ctx *fiber.Ctx) error {
 	// Get first file from form field "document":
 	file, err := ctx.FormFile("document")
