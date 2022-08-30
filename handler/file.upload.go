@@ -27,7 +27,11 @@ func Upload(ctx *fiber.Ctx) error {
 		// 👷 Save file using a relative path:
 		//ctx.SaveFile(file, fmt.Sprintf("/tmp/uploads_relative/%s", file.Filename))
 	}
-	return ctx.SendStatus(fiber.StatusOK)
+	//return ctx.SendStatus(fiber.StatusOK)
+	return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
+		"status":  true,
+		"message": "upload done",
+	})
 }
 
 func Uploads(ctx *fiber.Ctx) error {
@@ -48,12 +52,17 @@ func Uploads(ctx *fiber.Ctx) error {
 		// => "tutorial.pdf" 360641 "application/pdf"
 
 		// Save the files to disk:
-		err := ctx.SaveFile(file, fmt.Sprintf("./%s", file.Filename))
+		//err := ctx.SaveFile(file, fmt.Sprintf("./%s", file.Filename))
+		//fmt.Printf("./%s", file.Filename)
+		err := ctx.SaveFile(file, fmt.Sprintf("./uploads/%s", file.Filename))
 
 		// Check for errors
 		if err != nil {
 			return err
 		}
 	}
-	return ctx.SendStatus(fiber.StatusOK)
+	return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
+		"status":  true,
+		"message": "uploads done",
+	})
 }
